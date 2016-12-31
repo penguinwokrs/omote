@@ -4,7 +4,7 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deploy@example.com}
+role :app, %w{apps@ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
 # role :web, %w{deploy@example.com}
 # role :db,  %w{deploy@example.com}
 
@@ -15,7 +15,7 @@ role :app, %w{deploy@example.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'example.com', user: 'apps', roles: %w{web app}, my_property: :my_value
+server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'apps', roles: %w{app}
 
 
 # Custom SSH Options
@@ -25,11 +25,11 @@ server 'example.com', user: 'apps', roles: %w{web app}, my_property: :my_value
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+
+ set :ssh_options, {
+   keys:"#{ENV.fetch('HOME')}/ssh/private/omote-production.pem)",
+   forward_agent: false
+ }
 #
 # And/or per server (overrides global)
 # ------------------------------------
