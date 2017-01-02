@@ -37,7 +37,10 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
+  gem 'capistrano-rbenv-vars'
   gem 'capistrano3-puma'
+  # binding.pry
+  gem 'pry-rails'
 end
 
 group :development do

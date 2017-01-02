@@ -19,7 +19,13 @@ require 'capistrano/rbenv'
 # require 'capistrano/chruby'
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'
+require 'capistrano/puma'
+# require 'capistrano/rbenv_vars'
 require 'capistrano/rails/migrations'
+
+# use git
+require 'capistrano/scm/git'
+install_plugin Capistrano::SCM::Git
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }

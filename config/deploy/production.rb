@@ -4,9 +4,10 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{apps@ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
+role :app, %w{ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
 # role :web, %w{deploy@example.com}
 # role :db,  %w{deploy@example.com}
+set :branch, ENV.fetch('BRANCH', 'master')
 
 
 # Extended Server Syntax
@@ -15,8 +16,10 @@ role :app, %w{apps@ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'apps', roles: %w{app}
-
+# server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'apps', roles: %w{app}
+server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'ec2-user', roles: %w{app}
+set :stage, :production
+set :application, 'omote'
 
 # Custom SSH Options
 # ==================
@@ -25,10 +28,10 @@ server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'apps', 
 #
 # Global options
 # --------------
-
  set :ssh_options, {
-   keys:"#{ENV.fetch('HOME')}/ssh/private/omote-production.pem)",
-   forward_agent: false
+   keys:"#{ENV.fetch('HOME')}/.ssh/private/omote-production.pem",
+   forward_agent: false,
+   port: 22
  }
 #
 # And/or per server (overrides global)
