@@ -1,5 +1,6 @@
 # config valid only for Capistrano 3.1
 lock '3.7.1'
+set :application, 'omote'
 
 ##### env config
 DEPLOY_DIR = "/home/ec2-user/#{fetch(:application)}"
@@ -7,7 +8,6 @@ TIME_OUT = 60
 set :repo_url, 'https://github.com/penguinwokrs/omote.git'
 #####
 
-set :application, 'omote'
 # ruby version
 set :rbenv_ruby, '2.3.1'
 # set :linked_files, %w{.rbenv-vars}
@@ -45,9 +45,9 @@ set :bundle_path, -> { shared_path.join('vendor/bundle') }
 # puma
 set :puma_threds, [4, 16]
 set :puma_workers, 0
-set :puma_bind, "unix://#{DEPLOY_DIR}/tmp/sockets/#{fetch(:application)}-puma.sock"
-set :puma_state, "#{DEPLOY_DIR}/tmp/pids/puma.state"
-set :puma_pid, "#{DEPLOY_DIR}/tmp/pids/puma.pid"
+set :puma_bind, "unix://#{release_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
+set :puma_state, "#{release_path}/tmp/pids/puma.state"
+set :puma_pid, "#{release_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.error.log"
 set :puma_error_log, "#{release_path}/log/puma.access.log"
 set :puma_preload_app, true
