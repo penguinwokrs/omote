@@ -13,7 +13,7 @@ set :nginx_server_name, DOMAIN
 #####
 
 # ruby version
-set :rbenv_ruby, '2.3.1'
+set :rbenv_ruby, '2.3.3'
 # set :linked_files, %w{.rbenv-vars}
 set :deploy_to, DEPLOY_DIR
 
