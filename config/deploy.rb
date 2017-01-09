@@ -8,7 +8,7 @@ TIME_OUT = 60
 DOMAIN = 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com'
 set :repo_url, 'https://github.com/penguinwokrs/omote.git'
 # cap deploy nginx conf
-set :nginx_config_name, "#{fetch(:application)}.conf"
+# set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_server_name, DOMAIN
 #####
 

@@ -65,21 +65,21 @@ server {
     root html;
   }
 
-  location @503 {
-    error_page 405 = /system/maintenance.html;
-    if (-f $document_root/system/maintenance.html) {
-      rewrite ^(.*)$ /system/maintenance.html break;
-    }
-    rewrite ^(.*)$ /503.html break;
-  }
+#  location @503 {
+#    error_page 405 = /system/maintenance.html;
+#    if (-f $document_root/system/maintenance.html) {
+#      rewrite ^(.*)$ /system/maintenance.html break;
+#    }
+#    rewrite ^(.*)$ /503.html break;
+#  }
 
   if ($request_method !~ ^(GET|HEAD|PUT|PATCH|POST|DELETE|OPTIONS)$ ){
     return 405;
   }
 
-  if (-f $document_root/system/maintenance.html) {
-    return 503;
-  }
+#  if (-f $document_root/system/maintenance.html) {
+#    return 503;
+#  }
 
   location ~ \.(php|html)$ {
     return 405;
