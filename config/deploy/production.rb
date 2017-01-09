@@ -5,10 +5,9 @@
 # property set.  Don't declare `role :all`, it's a meta role.
 
 role :app, %w{ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
-# role :web, %w{deploy@example.com}
+role :web, %w{ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
 # role :db,  %w{deploy@example.com}
 set :branch, ENV.fetch('BRANCH', 'master')
-
 
 # Extended Server Syntax
 # ======================

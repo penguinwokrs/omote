@@ -5,7 +5,11 @@ set :application, 'omote'
 ##### env config
 DEPLOY_DIR = "/home/ec2-user/#{fetch(:application)}"
 TIME_OUT = 60
+DOMAIN = 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com'
 set :repo_url, 'https://github.com/penguinwokrs/omote.git'
+# cap deploy nginx conf
+set :nginx_config_name, "#{fetch(:application)}.conf"
+set :nginx_server_name, DOMAIN
 #####
 
 # ruby version
@@ -30,7 +34,7 @@ set :rbenv_type, :system
 set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{puma.rb}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -45,7 +49,7 @@ set :bundle_path, -> { shared_path.join('vendor/bundle') }
 # puma
 set :puma_threds, [4, 16]
 set :puma_workers, 0
-set :puma_bind, "unix://#{release_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
+set :puma_bind, "unix://#{release_path}/tmp/sockets/puma.sock"
 set :puma_state, "#{release_path}/tmp/pids/puma.state"
 set :puma_pid, "#{release_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.error.log"
