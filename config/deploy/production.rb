@@ -4,9 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
-role :web, %w{ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
-# role :db,  %w{deploy@example.com}
+# role :app, %w{ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
+# role :web, %w{ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com}
+# role :db,  %w{omote-production.cmkeem4olmiy.ap-northeast-1.rds.amazonaws.com}
 set :branch, ENV.fetch('BRANCH', 'master')
 
 # Extended Server Syntax
@@ -15,8 +15,7 @@ set :branch, ENV.fetch('BRANCH', 'master')
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-# server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'apps', roles: %w{app}
-server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'ec2-user', roles: %w{app}
+server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'ec2-user', roles: %w{app web db}
 set :stage, :production
 set :application, 'omote'
 
