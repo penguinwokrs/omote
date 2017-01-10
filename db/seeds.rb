@@ -9,8 +9,7 @@
 
 require "csv"
 
-#CSV.foreach('db/faq.csv') do |row|
-#  Faq.create(:category => row[0], :question => row[1], :answer => row[2])
-#end
- 
+CSV.foreach('db/faq.csv') do |row|
+ Faq.create(:category => row[0], :question => row[1], :answer => row[2])
 end
+
