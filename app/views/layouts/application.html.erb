@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Omote</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+<h2>HEADER</h2>
+<ul>
+	<% @global_navi.each do |navi| %>
+		<a href="<%= navi.url %>"><li><%= navi.item_ja %></li></a>
+	<% end %>
+</ul>
+
+    <%= yield %>
+
+<h2>FOOTER</h2>
+<ul>
+	<% @footer.each do |navi| %>
+		<a href="<%= navi.url %>"><li><%= navi.item_ja %></li></a>
+	<% end %>
+</ul>
+
+  </body>
+</html>

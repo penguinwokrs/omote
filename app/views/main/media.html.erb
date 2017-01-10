@@ -1,0 +1,10 @@
+
+<h2>PressRelease&News</h2>
+	<% @pr.each do |media| %>
+		<li><%= media.created_at %>：<%= media.header %></li>
+	<% end %>
+
+<h2>Media</h2>
+	<% @media.each do |media| %>
+		<li><%= media.created_at %>：<%= media.header %></li>
+	<% end %>

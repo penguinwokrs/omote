@@ -1,0 +1,83 @@
+<h2>Omoteとは？</h2>
+<ol>
+	<% @about.each do |faq| %>
+	<li>
+		<ul>
+			<li>Question：<%= faq.question %></li>
+			<li>Answer：<%= faq.answer %></li>
+		</ul>
+	</li>
+	<% end %>
+</ol>
+
+<h2>サービスについて</h2>
+<ol>
+	<% @service.each do |faq| %>
+	<li>
+		<ul>
+			<li>Question：<%= faq.question %></li>
+			<li>Answer：<%= faq.answer %></li>
+		</ul>
+	</li>
+	<% end %>
+</ol>
+
+<h2>会員登録について</h2>
+<ol>
+	<% @register.each do |faq| %>
+	<li>
+		<ul>
+			<li>Question：<%= faq.question %></li>
+			<li>Answer：<%= faq.answer %></li>
+		</ul>
+	</li>
+	<% end %>
+</ol>
+
+<h2>Giver と Taker</h2>
+<ol>
+	<% @giver.each do |faq| %>
+	<li>
+		<ul>
+			<li>Question：<%= faq.question %></li>
+			<li>Answer：<%= faq.answer %></li>
+		</ul>
+	</li>
+	<% end %>
+</ol>
+
+<h2>料金について</h2>
+<ol>
+	<% @price.each do |faq| %>
+	<li>
+		<ul>
+			<li>Question：<%= faq.question %></li>
+			<li>Answer：<%= faq.answer %></li>
+		</ul>
+	</li>
+	<% end %>
+</ol>
+
+<h2>予約お申込みから当日まで</h2>
+<ol>
+	<% @procedure.each do |faq| %>
+	<li>
+		<ul>
+			<li>Question：<%= faq.question %></li>
+			<li>Answer：<%= faq.answer %></li>
+		</ul>
+	</li>
+	<% end %>
+</ol>
+
+<h2>キャンセルについて</h2>
+<ol>
+	<% @cancel.each do |faq| %>
+	<li>
+		<ul>
+			<li>Question：<%= faq.question %></li>
+			<li>Answer：<%= faq.answer %></li>
+		</ul>
+	</li>
+	<% end %>
+</ol>

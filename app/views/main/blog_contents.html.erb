@@ -1,0 +1,8 @@
+<h1><%= @blog.header %></h1>
+<p><%= @blog.body %></p>
+
+
+<h2>その他の記事</h2>
+	<% @blogs.each do |blog| %>
+		<a href="<%= blog.id %>"><li><%= blog.header %></li></a>
+	<% end %>

@@ -1,0 +1,2 @@
+class GlobalNavi < ApplicationRecord
+end

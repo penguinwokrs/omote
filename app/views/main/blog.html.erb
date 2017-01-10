@@ -1,0 +1,3 @@
+	<% @blogs.each do |blog| %>
+		<a href="blog/<%= blog.id %>"><li><%= blog.header %></li></a>
+	<% end %>
