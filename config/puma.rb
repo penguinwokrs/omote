@@ -4,6 +4,13 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 #
+_proj_path = "#{File.expand_path("../..", __FILE__)}"
+_home = ENV.fetch("HOME")
+_proj_name = File.basename(_proj_path)
+
+bind "unix://#{_home}/#{_proj_name}/tmp/sockets/puma.sock"
+directory _proj_path
+
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
 threads threads_count, threads_count
 

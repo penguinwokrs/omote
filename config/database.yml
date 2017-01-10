@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: omote_production
-  username: omote
-  password: <%= ENV['OMOTE_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DATABASE_PRODUCTION_USER'] %>
+  password: <%= ENV['DATABASE_PRODUCTION_PASSWORD'] %>
+  host: <%= ENV['DATABASE_PRODUCTION_HOST'] %>
