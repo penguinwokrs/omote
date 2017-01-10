@@ -16,7 +16,6 @@ role :db,  %w{deploy@example.com}
 # used to set extended properties on the server.
 
 server 'example.com', user: 'apps', roles: %w{web app}, my_property: :my_value
-set :repo_url, 'git@github.com:penguinwokrs/omote.git'
 set :stage, :staging
 
 # Custom SSH Options
