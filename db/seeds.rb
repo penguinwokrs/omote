@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,10 +7,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-require "csv"
+require 'csv'
 
 CSV.foreach('db/faq.csv') do |row|
- Faq.create(:category => row[0], :question => row[1], :answer => row[2])
+  Faq.create(category: row[0], question: row[1], answer: row[2])
 end
 
+require Rails.root.join('db', 'prefectures')
+
+Prefecture.delete_all
+PREFECTURES.each do |prefecture|
+  Prefecture.create(prefecture)
+end
