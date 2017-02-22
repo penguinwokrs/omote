@@ -1,0 +1,37 @@
+<%= form_tag '/mocks/authentication' do %>
+  <script defer src="https://app.test.trustdock.io/v1/review_helper" data-key="Ssiv29gWPuRCWfJVXiLLkEJF" data-opener-class="open-button"></script>
+
+  <div class="form-parts">
+    <div class="form-part">
+      <label for="username">氏名</label>
+      <input type="text" id="username" name="username" placeholder="山田太郎" />
+    </div>
+
+    <div class="form-part">
+      <label for="dob">生年月日</label>
+      <%= date_select :user, :dob, { use_month_numbers: true, use_two_digit_numbers: true }, id: 'dob' %>
+    </div>
+
+    <div class="form-part">
+      <label for="prefectures">都道府県</label>
+      <%= select_tag 'user[prefecture]', options_for_select(Prefecture.pluck(:name, :id)), id: 'prefectures' %>
+    </div>
+
+    <div class="form-part">
+      <label for="address">住所</label>
+      <input type="text" id="address" name="address" placeholder="渋谷区道玄坂0-0-0 〇〇ビル 202号室" />
+    </div>
+
+    <div class="form-part">
+      <!-- class="open-button"をつけていただければ、aタグ or input type='button'にタグ変更していただいて構わないです。-->
+      <button type="button" class="open-button">本人確認する</button>
+    </div>
+    <input type="submit" name="登録" />
+  </div>
+<% end %>
+
+<style>
+  .form-part {
+    margin: 5px 0;
+  }
+</style>
