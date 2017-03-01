@@ -1,0 +1,23 @@
+omote担当者様
+
+TRUST DOCKより本人確認の結果が返ってきました。
+以下、レビュー結果になります。
+
+--------------------------
+本人確認申請者
+名前: <%= @authentication.name %>
+性別: <%= I18n.t("activerecord.attributes.authentication.gender.#{@authentication.gender}") %>
+誕生日: <%= @authentication.dob.strftime("%Y/%m/%d") %>
+住所: <%= @authentication.address %>
+
+審査結果　
+結果: <%= I18n.t("trust_dock.review.result.#{@result}") %>
+拒否理由(*拒否された場合、理由をこちらに記載します):
+
+<% @denial_reasons.each.with_index(1) do |hs, index| %>
+理由<%= index %>: <%= I18n.t("trust_dock.review.denial_reason.code.#{hs[:code]}") %>
+詳細<%= index %>: <%= hs[:message] %>
+<% end %>
+--------------------------
+
+このメールは、自動配信メールです。

@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      authentication: 認証
+      prefecture: 都道府県
+    attributes:
+      authentication:
+        name: 名前
+        dob: 生年月日
+        prefecture: 都道府県
+        address: 住所
+        status:
+          in_progress: 認証中
+          approved: 許可
+          denied: 拒否
+        gender:
+          male: 男性
+          female: 女性
+        prefecture_id: 都道府県
+      prefecture:
+        name: 名前
+
+
+
+

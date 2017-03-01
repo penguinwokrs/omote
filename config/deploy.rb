@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # config valid only for Capistrano 3.1
 lock '3.7.1'
 set :application, 'omote'
@@ -7,6 +8,7 @@ DEPLOY_DIR = "/home/ec2-user/#{fetch(:application)}"
 TIME_OUT = 60
 DOMAIN = 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com'
 set :repo_url, 'git@bitbucket.org:monji_yusuke/omote.git'
+
 # cap deploy nginx conf
 # set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_server_name, DOMAIN
@@ -34,14 +36,13 @@ set :rbenv_type, :system
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{puma.rb}
+set :linked_files, %w(puma.rb .env)
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system)
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
 
 # bundle
 set :bundle_path, -> { shared_path.join('vendor/bundle') }
@@ -62,7 +63,7 @@ set :puma_init_active_record, true # Change to false when not using ActiveRecord
 set :keep_releases, 5
 
 namespace :deploy do
-  desc "Make sure local git is in sync with remote."
+  desc 'Make sure local git is in sync with remote.'
   task :confirm do
     on roles(:app) do
       puts "This stage is '#{fetch(:stage)}'. Deploying branch is '#{fetch(:branch)}'."
@@ -72,8 +73,8 @@ namespace :deploy do
   desc 'Initial Deploy'
   task :initial do
     # on roles(:app) do
-      before 'deploy:restart', 'puma:start'
-      invoke 'deploy'
+    before 'deploy:restart', 'puma:start'
+    invoke 'deploy'
     # end
   end
 
@@ -81,24 +82,24 @@ namespace :deploy do
   after :finishing, :compile_assets
   after :finishing, :cleanup
 
-# namespace :deploy do
-#
-#   desc 'Restart application'
-#   task :restart do
-#     on roles(:app), in: :sequence, wait: 5 do
-#       # Your restart mechanism here, for example:
-#       # execute :touch, release_path.join('tmp/restart.txt')
-#     end
-#   end
-#
-#   after :publishing, :restart
-#
-#   after :restart, :clear_cache do
-#     on roles(:web), in: :groups, limit: 3, wait: 10 do
-#       # Here we can do anything such as:
-#       # within release_path do
-#       #   execute :rake, 'cache:clear'
-#       # end
-#     end
-#   end
+  # namespace :deploy do
+  #
+  #   desc 'Restart application'
+  #   task :restart do
+  #     on roles(:app), in: :sequence, wait: 5 do
+  #       # Your restart mechanism here, for example:
+  #       # execute :touch, release_path.join('tmp/restart.txt')
+  #     end
+  #   end
+  #
+  #   after :publishing, :restart
+  #
+  #   after :restart, :clear_cache do
+  #     on roles(:web), in: :groups, limit: 3, wait: 10 do
+  #       # Here we can do anything such as:
+  #       # within release_path do
+  #       #   execute :rake, 'cache:clear'
+  #       # end
+  #     end
+  #   end
 end
