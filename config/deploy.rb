@@ -7,7 +7,9 @@ set :application, 'omote'
 DEPLOY_DIR = "/home/ec2-user/#{fetch(:application)}"
 TIME_OUT = 60
 DOMAIN = 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com'
-set :repo_url, 'git@bitbucket.org:monji_yusuke/omote.git'
+# set :repo_url, 'git@bitbucket.org:monji_yusuke/omote.git'
+set :repo_url, 'git@github.com:kikeda1104/omote.git'
+
 # cap deploy nginx conf
 # set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_server_name, DOMAIN
@@ -35,7 +37,7 @@ set :rbenv_type, :system
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w(puma.rb)
+set :linked_files, %w(puma.rb .env)
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system)

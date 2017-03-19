@@ -8,7 +8,6 @@ class CreateAuthentications < ActiveRecord::Migration[5.0]
       t.string :address
       t.integer :trust_dock_id
       t.integer :status, default: 0, null: false
-      t.string :denied_reason
 
       t.timestamps
     end
