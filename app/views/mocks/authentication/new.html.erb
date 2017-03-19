@@ -1,24 +1,29 @@
-<%= form_tag '/mocks/authentication' do %>
+<%= form_for(@authentication, url: mocks_authentication_index_path) do |f| %>
   <script defer src="https://app.test.trustdock.io/v1/review_helper" data-key="Ssiv29gWPuRCWfJVXiLLkEJF" data-opener-class="open-button"></script>
+  <% # FIXME: data-keyをenvに書き出す %>
 
   <div class="form-parts">
     <div class="form-part">
-      <label for="authenticationname">氏名</label>
-      <input type="text" id="authenticationname" name="authentication[name]" placeholder="山田太郎" />
+      <label for="name">氏名</label>
+      <%= f.text_field :name, { placeholder: '山田太郎' } %>
     </div>
 
     <div class="form-part">
       <label for="dob">生年月日</label>
-      <%= date_select :authentication, :dob, { use_month_numbers: true, use_two_digit_numbers: true, start_year: 1950 }, id: 'dob' %>
+      <%= f.date_select :dob, { use_month_numbers: true, use_two_digit_numbers: true, start_year: 1950 }, id: 'dob' %>
     </div>
 
     <div class="form-part">
       <label for="prefectures">都道府県</label>
-      <%= select_tag 'authentication[prefecture_id]', options_for_select(Prefecture.pluck(:name, :id)), id: 'prefectures' %>
+      <%= f.select :prefecture_id, options_for_select(Prefecture.pluck(:name, :id)), id: 'prefectures' %>
 
     <div class="form-part">
       <label for="address">住所</label>
       <input type="text" id="address" name="authentication[address]" placeholder="渋谷区道玄坂0-0-0 〇〇ビル 202号室" />
+    </div>
+
+    <div class="form-part">
+      <button type="button" class="open-button">本人確認する</button>
     </div>
   </div>
 <% end %>

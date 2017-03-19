@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/recruit' => 'main#recruit'
   get '/company' => 'main#company'
 
+  # FIXME: namespaceの削除
   namespace :mocks do
     resources :authentication, only: [:new, :create]
   end
