@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   get '/recruit' => 'main#recruit'
   get '/company' => 'main#company'
 
-  namespace :mocks do
-    resources :authentication, only: [:new, :create]
+  resources :authentication, only: [:new, :create] do
+    collection do
+      match '/callbacks/trust_dock/request_authentication' =>
+      'authentication#update_from_trust_dock',
+            via: [:get, :post]
+    end
   end
 end

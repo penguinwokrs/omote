@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary server in each group
@@ -15,7 +16,7 @@ set :branch, ENV.fetch('BRANCH', 'master')
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'ec2-user', roles: %w{app web db}
+server 'ec2-54-199-246-203.ap-northeast-1.compute.amazonaws.com', user: 'ec2-user', roles: %w(app web db)
 set :stage, :production
 set :application, 'omote'
 
@@ -26,11 +27,9 @@ set :application, 'omote'
 #
 # Global options
 # --------------
- set :ssh_options, {
-   keys:"#{ENV.fetch('HOME')}/.ssh/private/omote-production.pem",
-   forward_agent: false,
-   port: 22
- }
+set :ssh_options, keys: "#{ENV.fetch('HOME')}/.ssh/private/omote-production.pem",
+                  forward_agent: false,
+                  port: 22
 #
 # And/or per server (overrides global)
 # ------------------------------------
