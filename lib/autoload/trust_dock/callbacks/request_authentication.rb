@@ -14,7 +14,7 @@ module TrustDock
       end
 
       def parse_denied_reasons
-        return [] if @params[:review].dig(:denial_reasons).blank?
+        return [] if @params[:review]&.dig(:denial_reasons).blank?
         @params[:review].dig(:denial_reasons).map do |h|
           { code: h[:code], message: h[:message] }
         end
