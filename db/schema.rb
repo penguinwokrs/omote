@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320025603) do
+ActiveRecord::Schema.define(version: 20170326023524) do
 
   create_table "authentications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 20170320025603) do
     t.integer  "prefecture_id"
     t.string   "address"
     t.integer  "trust_dock_id"
-    t.integer  "status",                  default: 0, null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "status",                  default: 0,  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "gender",        limit: 2
+    t.string   "message_id",              default: ""
     t.index ["prefecture_id"], name: "index_authentications_on_prefecture_id", using: :btree
   end
 

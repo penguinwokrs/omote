@@ -17,6 +17,7 @@ class Authentication < ApplicationRecord
   enum gender: { male: 0, female: 1 }
 
   def set_trust_dock
+    self.message_id = SecureRandom.uuid
     request_service = TrustDock::Requests::RequestAuthentication.new(
       location: 'https://api.test.trustdock.io/v1/review',
       params: params_of_trust_dock,

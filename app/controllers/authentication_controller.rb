@@ -37,8 +37,7 @@ class AuthenticationController < ApplicationController
   end
 
   def set_authentication_by_trust_dock_id
-    @authentication = Authentication.find_by(trust_dock_id: params['id'])
-    head :not_found if @authentication.blank?
+    @authentication = Authentication.find(trust_dock_id: params['id'])
   end
 
   def multi_parameter_attribute

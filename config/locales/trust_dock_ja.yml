@@ -7,8 +7,8 @@ ja:
       denial_reason:
         code:
           invalid_document: 指定された身分証ではない
-          blurred: ぼやけている
-          hidden_part_document: かくしている
+          blurred: 画像が不鮮明
+          hidden_part_document: 項目が隠れている
           expired: 有効期限切れ
           missing_seal: 発行元の印章がない
           missing_address: 住所記載なし（パスポート住所記入欄ありタイプのみ）
