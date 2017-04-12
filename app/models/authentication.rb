@@ -11,7 +11,9 @@ class Authentication < ApplicationRecord
   validates :review_token, presence: true, on: :request_authentication
 
   before_save :set_trust_dock, if: :review_token?
-  after_save -> { AuthenticationMailer.notification(self).deliver }, if: :review_token?
+  after_save lambda {
+    AuthenticationMailer.notification(self).deliver
+  }, if: :review_token?
 
   enum status: { in_progress: 0, approved: 1, denied: 1 }
   enum gender: { male: 0, female: 1 }
