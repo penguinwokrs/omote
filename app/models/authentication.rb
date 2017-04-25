@@ -5,7 +5,7 @@ class Authentication < ApplicationRecord
   belongs_to :prefecture
 
   validates :name, presence: true
-  validates :dob, presence: true
+  validates :birth, presence: true
   validates :prefecture_id, presence: true
   validates :address, presence: true
   validates :review_token, presence: true, on: :request_authentication
@@ -42,8 +42,8 @@ class Authentication < ApplicationRecord
         fields: fields,
         data: {
           name: name,
-          sex: gender,
-          dob: dob.strftime('%Y-%m-%d'),
+          birth: birth.strftime('%Y-%m-%d'),
+          gender: gender,
           address: full_address
         }
       }
@@ -55,7 +55,7 @@ class Authentication < ApplicationRecord
   end
 
   def fields
-    %w(name sex dob address)
+    %w(name birth gender address)
   end
 
   def review_token?

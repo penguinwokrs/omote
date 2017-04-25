@@ -7,7 +7,7 @@ TRUST DOCKより本人確認の結果が返ってきました。
 本人確認申請者
 名前: <%= @authentication.name %>
 性別: <%= I18n.t("activerecord.attributes.authentication.gender.#{@authentication.gender}", default: '不明') %>
-誕生日: <%= @authentication.dob.strftime("%Y/%m/%d") %>
+生年月日: <%= @authentication.birth.strftime("%Y/%m/%d") %>
 住所: <%= @authentication.address %>
 
 審査結果　

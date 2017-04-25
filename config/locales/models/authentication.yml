@@ -6,7 +6,7 @@ ja:
     attributes:
       authentication:
         name: 名前
-        dob: 生年月日
+        birth: 生年月日
         prefecture: 都道府県
         address: 住所
         status:

@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 <%= form_for(@authentication, url: authentication_index_path) do |f| %>
- <script defer src="https://app.test.trustdock.io/v1/review_helper" data-key="<%= ENV['DATA_KEY'] %>" data-opener-class="open-button"></script>
+ <script defer src="https://app.test.trustdock.io/v1/review_helper" data-project-key="<%= ENV['DATA_PROJECT_KEY'] %>" data-opener-class="open-button"></script>
   <div class="form-parts">
     <div class="form-part">
       <label for="name">氏名</label>
@@ -19,8 +19,8 @@
     </div>
 
     <div class="form-part">
-      <label for="dob">生年月日</label>
-      <%= f.date_select :dob, { use_month_numbers: true, use_two_digit_numbers: true, start_year: 1950, include_blank: true }, { id: 'dob' } %>
+      <label for="birth">生年月日</label>
+      <%= f.date_select :birth, { use_month_numbers: true, use_two_digit_numbers: true, start_year: 1950, include_blank: true }, { id: 'birth' } %>
     </div>
 
     <div class="form-part">

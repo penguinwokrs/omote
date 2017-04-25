@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+require 'net/http'
+require 'uri'
+
 module TrustDock
   module Requests
     class Base
