@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+ryan_gosling:
+  name: 'ゴズリングライアン'
+  dob: '1980/11/12'
+  prefecture: tokyo
+  address: '東京都渋谷区桜丘町15-17'
+  gender: 0
+
+emily_jean_stone:
+  name: 'エミリー・ジーン・ストーン'
+  dob: '1988/11/6'
+  prefecture_id: 13
+  gender: 1
+

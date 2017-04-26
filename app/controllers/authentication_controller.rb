@@ -42,13 +42,13 @@ class AuthenticationController < ApplicationController
 
   def multi_parameter_attribute
     date = params.require(:authentication)
-                 .permit(:dob).to_h.map do |key, value|
+                 .permit(:birth).to_h.map do |key, value|
       type_cast_attribute_value(key, value)
     end
 
-    { dob: Date.new(date[0], date[1], date[2]) }
+    { birth: Date.new(date[0], date[1], date[2]) }
   rescue
-    { dob: nil }
+    { birth: nil }
   end
 
   def type_cast_attribute_value(multiparameter_name, value)

@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class BlogTest < ActiveSupport::TestCase
+class AutheticationMailerTest < ActionMailer::TestCase
   # test "the truth" do
   #   assert true
   # end

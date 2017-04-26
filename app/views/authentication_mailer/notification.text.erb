@@ -7,7 +7,8 @@ omote担当者様
 氏名: <%= @authentication.name %>
 性別: <%= I18n.t("activerecord.attributes.authentication.gender.#{@authentication.gender}", default: '不明') %>
 住所: <%= @authentication.full_address %>
-電話番号: <%= @authentication.dob %>
+生年月日: <%= @authentication.birth.strftime("%Y/%m/%d") %>
+
 ------------------------
 
 このメールは、自動配信メールです。
