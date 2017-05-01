@@ -23,6 +23,7 @@ PREFECTURES = [
   { id: 21,  name: '岐阜県' },
   { id: 22,  name: '静岡県' },
   { id: 23,  name: '愛知県' },
+  { id: 24,  name: '三重県' },
   { id: 25,  name: '滋賀県' },
   { id: 26,  name: '京都府' },
   { id: 27,  name: '大阪府' },
