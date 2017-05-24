@@ -1,45 +1,44 @@
-<% if @authentication.errors.any? %>
-  <ul>
-    <% @authentication.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<div id="wrap" class="center">
+  <h1>Verification Form</h1>
+  <h2>本人確認フォーム</h2>
+
+  <% if @authentication.errors.any? %>
+    <ul>
+      <% @authentication.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div id="content">
+    <%= form_for(@authentication, url: authentication_index_path, html: { id: 'verification_form' }) do |f| %>
+      <script defer src="https://app.test.trustdock.io/v1/review_helper" data-project-key="<%= ENV['DATA_PROJECT_KEY'] %>" data-opener-class="open-button"></script>
+      <div class="input-box">
+        <span>氏名<font color="red">*</font></span><span class="red" id="error_verification_name"></span><br />
+        <%= f.text_field :name, { id: 'verification_name' } %>
+      </div>
+
+      <div class="input-box">
+        <span>性別<font color="red">*</font></span><span class="red" id="error_verification_name"></span><br />
+        <%= f.select :gender, options_for_select([['男性', 'male'], ['女性', 'female']]), { prompt: '--' }, { id: 'gender' } %>
+      </div>
+
+      <div class="input-box">
+        <span>生年月日<font color="red">*</font></span><span class="red" id="error_verification_birth"></span><br />
+        <%= f.date_select :birth, { use_month_numbers: true, use_two_digit_numbers: true, start_year: 1950, prompt: '--' }, { id: 'birth' } %>
+      </div>
+
+      <div class="input-box">
+        <span>都道府県<font color="red">*</font></span><span class="red" id="error_verification_pref"></span><br />
+        <%= f.select :prefecture_id, options_for_select(Prefecture.pluck(:name, :id)), { prompt: '--' }, { id: 'prefectures' } %>
+      </div>
+
+      <div class="input-box">
+        <span>住所<font color="red">*</font></span><span class="red" id="error_verification_mail"></span><br />
+        <%= f.text_field :address %>
+      </div>
+
+      <input type="button" value="本人確認をする" class="open-button btn-submit">
     <% end %>
-  </ul>
-<% end %>
-<%= form_for(@authentication, url: authentication_index_path) do |f| %>
- <script defer src="https://app.test.trustdock.io/v1/review_helper" data-project-key="<%= ENV['DATA_PROJECT_KEY'] %>" data-opener-class="open-button"></script>
-  <div class="form-parts">
-    <div class="form-part">
-      <label for="name">氏名</label>
-      <%= f.text_field :name, { placeholder: '山田太郎' } %>
-    </div>
-
-    <div class="form-part">
-      <label for="gender">性別</label>
-      <%= f.select :gender, options_for_select([['男性', 'male'], ['女性', 'female']]), { include_blank: true }, { id: 'gender' } %>
-    </div>
-
-    <div class="form-part">
-      <label for="birth">生年月日</label>
-      <%= f.date_select :birth, { use_month_numbers: true, use_two_digit_numbers: true, start_year: 1950, include_blank: true }, { id: 'birth' } %>
-    </div>
-
-    <div class="form-part">
-      <label for="prefectures">都道府県</label>
-      <%= f.select :prefecture_id, options_for_select(Prefecture.pluck(:name, :id)), { include_blank: true }, { id: 'prefectures' } %>
-
-    <div class="form-part">
-      <label for="address">住所</label>
-      <%= f.text_field :address, { placeholder: '渋谷区道玄坂0-0-0 〇〇ビル 202号室' } %>
-    </div>
-
-    <div class="form-part">
-      <button type="button" class="open-button">本人確認する</button>
-    </div>
   </div>
-<% end %>
-
-<style>
-  .form-part {
-    margin: 5px 0;
-  }
-</style>
+</div>

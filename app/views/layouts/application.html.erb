@@ -9,22 +9,8 @@
   </head>
 
   <body>
-
-<h2>HEADER</h2>
-<ul>
-	<% @global_navi.each do |navi| %>
-		<a href="<%= navi.url %>"><li><%= navi.item_ja %></li></a>
-	<% end %>
-</ul>
-
+    <%= render partial: 'common/header' %>
     <%= yield %>
-
-<h2>FOOTER</h2>
-<ul>
-	<% @footer.each do |navi| %>
-		<a href="<%= navi.url %>"><li><%= navi.item_ja %></li></a>
-	<% end %>
-</ul>
-
+    <%= render partial: 'common/footer' %>
   </body>
 </html>
